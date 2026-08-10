@@ -1,52 +1,15 @@
-package ir.irancelllabs.hr.model;
-
+package ir.irancelllabs.hr.dtos;
 
 import ir.irancelllabs.hr.validation.NationalId;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 
-@Entity
-@Table(name = "employees")
-public class Employee {
+public class CreateEmployeeRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
-
-
-    @Column(unique = true)
-
     private String email;
-
     private String department;
-    @Column(nullable = false, unique = true)
+    @NationalId
     private String nationalId;
-
-    private Double salary;
-
-    private String bankAccountNumber;
-
-
-
-    public Employee() {
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
     public String getFirstName() {
         return firstName;
@@ -56,7 +19,6 @@ public class Employee {
         this.firstName = firstName;
     }
 
-
     public String getLastName() {
         return lastName;
     }
@@ -64,7 +26,6 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
     public String getEmail() {
         return email;
@@ -74,29 +35,12 @@ public class Employee {
         this.email = email;
     }
 
-
     public String getDepartment() {
         return department;
     }
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-    public void setBankAccountNumber(String bankAccountNumber) {
-        this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public String getBankAccountNumber() {
-        return bankAccountNumber;
     }
 
     public String getNationalId() {
