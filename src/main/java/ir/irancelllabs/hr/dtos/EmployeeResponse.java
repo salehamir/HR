@@ -1,12 +1,14 @@
 package ir.irancelllabs.hr.dtos;
 
+import ir.irancelllabs.hr.model.Department;
+
 public class EmployeeResponse {
 
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
-    private String department;
+    private Department department;
 
     public Long getId() {
         return id;
@@ -40,11 +42,11 @@ public class EmployeeResponse {
         this.email = email;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 }

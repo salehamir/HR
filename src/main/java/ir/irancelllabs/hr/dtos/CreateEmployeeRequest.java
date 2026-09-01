@@ -1,15 +1,22 @@
 package ir.irancelllabs.hr.dtos;
 
+import ir.irancelllabs.hr.model.Department;
 import ir.irancelllabs.hr.validation.NationalId;
+import jakarta.validation.constraints.Email;
+
+import java.math.BigDecimal;
 
 public class CreateEmployeeRequest {
 
     private String firstName;
     private String lastName;
+    @Email
     private String email;
-    private String department;
+    private Department department;
     @NationalId
     private String nationalId;
+    private BigDecimal salary;
+
 
     public String getFirstName() {
         return firstName;
@@ -35,11 +42,11 @@ public class CreateEmployeeRequest {
         this.email = email;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
@@ -49,5 +56,13 @@ public class CreateEmployeeRequest {
 
     public void setNationalId(String nationalId) {
         this.nationalId = nationalId;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 }

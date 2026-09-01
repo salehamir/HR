@@ -1,9 +1,11 @@
 package ir.irancelllabs.hr.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ir.irancelllabs.hr.validation.NationalId;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "employees")
@@ -13,23 +15,24 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name = "name")
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(nullable = false,name = "family")
     private String lastName;
 
-
-
     @Column(unique = true)
-
     private String email;
 
-    private String department;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Department department;
+
     @Column(nullable = false, unique = true)
     private String nationalId;
 
-    private Double salary;
+    @JsonProperty()
+    @Column(precision = 19, scale = 2)
+    private BigDecimal salary;
 
     private String bankAccountNumber;
 
@@ -75,20 +78,19 @@ public class Employee {
     }
 
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
-
-    public Double getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
     public void setBankAccountNumber(String bankAccountNumber) {
